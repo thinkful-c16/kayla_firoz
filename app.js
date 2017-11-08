@@ -3,6 +3,7 @@
 $(document).ready (function(){
   eventListen();
   
+  
 });
 
 // endpoint URL for "https://www.googleapis.com/youtube/v3/search"
@@ -33,25 +34,26 @@ function displayAPIData(data) {
       vidTitle: vidTitle
     };
   });
-  console.log(results);
-  renderResults(results);
+  generateTemplate(results);
 }
 
 //transforms data to html
-function renderResults(results){
-  results.map(function(){
-
-
- });
-  return `
-  <li>
-      <span>vid title</span>videoID 
+function generateTemplate(results){
+  let template = results.map(function(value, index){
+    //const templates = template.join('');
+    return `
+    <li>
+      <span>${value.videoID}</span>
       <div><img src="" alt="alt text here">
       </div>
     </li>
-  `;
+    `;
+  }).join('');
+}
 
 
+function renderTemplate(template){
+  $('.search-results-ul').html(template);
 }
 
 //function to append/render retreived data 
