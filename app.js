@@ -34,7 +34,7 @@ function displayAPIData(data) {
   //create an object to attach to html
   const results = data.items.map(function(value, index) {
     console.log(value['id']['videoId'], index);
-
+//grab thumbnail --> ['snippet']['thumbnails']['medium'].url
     // return result[0];
   });
   // console.log(results);
