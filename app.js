@@ -2,7 +2,6 @@
 
 $(document).ready (function(){
   eventListen();
-  displayAPIData();
   
 });
 
@@ -18,15 +17,34 @@ function retrieveAPIData(searchTerm){
   //how does data know to pass in display results 
   $.getJSON('https://www.googleapis.com/youtube/v3/search', query, function(data) {
     // console.log(data.items);
-   displayAPIData(data);
+    displayAPIData(data);
   });
 }
 
-function displayAPIData(data) {
-  const results = data.items;
+// //"items": [
+//   {
+//     "kind": "youtube#searchResult",
+//     "etag": "\"ld9biNPKjAjgjV7EZ4EKeEGrhao/h7LqypPLmSoGcvHsXnvZmFcglkE\"",
+//     "id": {
+//      "kind": "youtube#video",
+//      "videoId": "0pdCW9-eiVU"
+//     },
 
+function displayAPIData(data) {
+  //create an object to attach to html
+  const results = data.items.map(function(value, index) {
+    console.log(value['id']['videoId'], index);
+
+    // return result[0];
+  });
+  // console.log(results);
+  // return results;
+  // items.map(items['id']['videoid'])
 }
 
+function renderResults(){
+  //code
+}
 
 //function to append/render retreived data 
 
