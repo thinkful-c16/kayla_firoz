@@ -2,13 +2,12 @@
 
 $(document).ready (function(){
   eventListen();
-  listenForSearchTerm();
+  
 });
 
 // endpoint URL for "https://www.googleapis.com/youtube/v3/search"
 
-//const youtubeURL = 'https://www.googleapis.com/youtube/v3/search';
-
+//retreives API data
 // function retrieveApiData(){
 //  $.getJSON('https://www.googleapis.com/youtube/v3/search?', (data) => {
 //   const query = {
@@ -19,26 +18,15 @@ $(document).ready (function(){
 //  }  
 // });
 
-
-//function that tells us what to search for (construct query object)
-//function to render results to results <div>
+//function to display the data
+//function to append/render retreived data 
 
 //event listener that grabs search term and returns as callback to event handler
 function eventListen() {
-  $('.search-button').on('click', function(e){
+  $('.search-form').on('submit', function(e){
     e.preventDefault();
-    
-    
-  });
-}
-//event handler grabs search term and passes it to function to display the result
-
-function listenForSearchTerm(){
-  $('.search-query').on('submit', function(e){
-    e.preventDefault();
-    const searchTerm = $('.search-query').val();  
-    console.log(searchTerm);
-    
+    const searchTerm = $('.search-form').find('.search-query').val();  
+    console.log(searchTerm);    
   });
 }
 
