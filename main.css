@@ -1,0 +1,40 @@
+* {
+    font-family: 'Exo', sans-serif;
+}
+
+div {
+    display: block; 
+    margin: auto;
+    max-width: 960px;
+}
+
+img {
+    display: block;
+    max-width: 417px;
+    height: 259px;
+    margin: auto;
+}
+
+h2{
+  font-size: 40px;
+  margin-top: 20px;
+}
+
+input {
+    height: 40px;
+    width: 100%;
+    font-size: 20px;
+    margin-top: 5px;
+}
+legend {
+    height: 30px;
+    font-size: 20px;
+    padding-bottom: 15px;
+    
+}
+
+button {
+    margin-top: 15px;
+    width: 100px;
+    height: 40px
+}
