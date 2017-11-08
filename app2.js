@@ -21,37 +21,29 @@ function retrieveAPIData(searchTerm){
   });
 }
 
+// //"items": [
+//   {
+//     "kind": "youtube#searchResult",
+//     "etag": "\"ld9biNPKjAjgjV7EZ4EKeEGrhao/h7LqypPLmSoGcvHsXnvZmFcglkE\"",
+//     "id": {
+//      "kind": "youtube#video",
+//      "videoId": "0pdCW9-eiVU"
+//     },
+
 function displayAPIData(data) {
   //create an object to attach to html
   const results = data.items.map(function(value, index) {
-    const videoID = value.id['videoId']; 
-    const medThumbURL = value.snippet.thumbnails.medium.url;
-    const vidTitle = value.snippet.title;
-    return {
-      videoID: videoID,
-      medThumbURL: medThumbURL,
-      vidTitle: vidTitle
-    };
+    console.log(value['id']['videoId'], index);
+
+    // return result[0];
   });
-  console.log(results);
-  renderResults(results);
+  // console.log(results);
+  // return results;
+  // items.map(items['id']['videoid'])
 }
 
-//transforms data to html
-function renderResults(results){
-  results.map(function(){
-
-
- });
-  return `
-  <li>
-      <span>vid title</span>videoID 
-      <div><img src="" alt="alt text here">
-      </div>
-    </li>
-  `;
-
-
+function renderResults(){
+  //code
 }
 
 //function to append/render retreived data 
