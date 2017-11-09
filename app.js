@@ -10,14 +10,13 @@ function retrieveAPIData(searchTerm){
     q: searchTerm, 
     part: 'snippet',
     key: 'AIzaSyBR1d0lPmG_VxIFD-U7iEFl20oyg5WslXU',
+    maxResults: 6,
   };
   $.getJSON('https://www.googleapis.com/youtube/v3/search', query, function(data) {
     // console.log(data.items);
     displayAPIData(data);
   });
 }
-// for more results: ?maxResults=10
-
 
 //creates  object to attach to html
 function displayAPIData(data) {
@@ -40,15 +39,18 @@ function generateTemplate(results){
     return `
     <li class="result-content">
       <div class="displayed-video">
-        <div class="youtube-div"><span>${value.vidTitle}</span></div>
-        <iframe width="460" height="215" src="https://www.youtube.com/embed/${value.videoID}" frameborder="0" align="middle" allowfullscreen></iframe>
+        <div class="youtubeText"><span>${value.vidTitle}</span></div>
+        <div><iframe width="400" height="300" src="https://www.youtube.com/embed/${value.videoID}" frameborder="0" align="middle" allowfullscreen></iframe></div>        
       </div>
+  
     </li>
     `;
   }).join(''); 
   $('.search-results-ul').html(template);
 }
-//<div><img src="${value.medThumbURL}" alt="">
+// thumbnails clickable to new tab with youtube video:
+//<div class="thumbnail"><a href="https://www.youtube.com/embed/${value.videoID}" target="_blank"><img src="${value.medThumbURL}" alt=""></div>
+
 
 //event listener that grabs search term and returns as callback to event handler
 function eventListen() {
