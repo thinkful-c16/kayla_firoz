@@ -14,6 +14,7 @@ function retrieveAPIData(searchTerm){
     q: searchTerm, //grabbed from listener  
     part: 'snippet',
     key: 'AIzaSyBR1d0lPmG_VxIFD-U7iEFl20oyg5WslXU',
+    maxResults: 20
   };
   //how does data know to pass in display results 
   $.getJSON('https://www.googleapis.com/youtube/v3/search', query, function(data) {
@@ -50,7 +51,7 @@ function generateTemplate(results){
     </li>
     `;
   });
-  renderTemplate(resultsMapped)
+  renderTemplate(resultsMapped);
 }
 
 
