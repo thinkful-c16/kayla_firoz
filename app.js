@@ -34,26 +34,29 @@ function displayAPIData(data) {
       vidTitle: vidTitle
     };
   });
+  console.log(results);
   generateTemplate(results);
 }
 
 //transforms data to html
 function generateTemplate(results){
-  let template = results.map(function(value, index){
-    //const templates = template.join('');
+  let resultsMapped = results.map(function(item, index){
     return `
     <li>
-      <span>${value.videoID}</span>
-      <div><img src="" alt="alt text here">
+      <div>${item.vidTitle}</div>
+      <span>${item.videoID}</span>
+      <div><img src=${item.medThumbURL} alt="alt text here">
       </div>
     </li>
     `;
-  }).join('');
+  });
+  renderTemplate(resultsMapped)
 }
 
 
-function renderTemplate(template){
-  $('.search-results-ul').html(template);
+function renderTemplate(resultsMapped){
+  resultsMapped.join('');
+  $('.search-results-ul').html(resultsMapped);
 }
 
 //function to append/render retreived data 
