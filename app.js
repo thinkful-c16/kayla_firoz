@@ -2,28 +2,25 @@
 
 $(document).ready (function(){
   eventListen();
-  
-  
 });
-
-// endpoint URL for "https://www.googleapis.com/youtube/v3/search"
 
 //retreives API data
 function retrieveAPIData(searchTerm){
   const query = {
-    q: searchTerm, //grabbed from listener  
+    q: searchTerm, 
     part: 'snippet',
     key: 'AIzaSyBR1d0lPmG_VxIFD-U7iEFl20oyg5WslXU',
   };
-  //how does data know to pass in display results 
   $.getJSON('https://www.googleapis.com/youtube/v3/search', query, function(data) {
     // console.log(data.items);
     displayAPIData(data);
   });
 }
+// for more results: ?maxResults=10
 
+
+//creates  object to attach to html
 function displayAPIData(data) {
-  //create an object to attach to html
   const results = data.items.map(function(value, index) {
     const videoID = value.id['videoId']; 
     const medThumbURL = value.snippet.thumbnails.medium.url;
@@ -37,42 +34,30 @@ function displayAPIData(data) {
   generateTemplate(results);
 }
 
-//transforms data to html
+//transforms object datadata to string
 function generateTemplate(results){
-  let template = results.map(function(value, index){
-    //const templates = template.join('');
+  const template = results.map(function(value){
     return `
-    <li>
-      <span>${value.videoID}</span>
-      <div><img src="" alt="alt text here">
+    <li class="result-content">
+      <div class="displayed-video">
+        <div class="youtube-div"><span>${value.vidTitle}</span></div>
+        <iframe width="460" height="215" src="https://www.youtube.com/embed/${value.videoID}" frameborder="0" align="middle" allowfullscreen></iframe>
       </div>
     </li>
     `;
-  }).join('');
-}
-
-
-function renderTemplate(template){
+  }).join(''); 
   $('.search-results-ul').html(template);
 }
-
-//function to append/render retreived data 
+//<div><img src="${value.medThumbURL}" alt="">
 
 //event listener that grabs search term and returns as callback to event handler
 function eventListen() {
   $('.search-form').on('submit', function(e){
     e.preventDefault();
-    const searchTerm = $('.search-form').find('.search-query').val();  
-    // console.log(searchTerm);
-    retrieveAPIData(searchTerm);    
+    const searchClear = $('.search-form').find('.search-query');
+    const searchTerm = searchClear.val();
+    searchClear.val('');
+    retrieveAPIData(searchTerm);  
   });
-  
 }
 
-
-
-//youtube api documentation:
-
-//https://developers.google.com/youtube/v3/code_samples/javascript
-
-// key AIzaSyBR1d0lPmG_VxIFD-U7iEFl20oyg5WslXU

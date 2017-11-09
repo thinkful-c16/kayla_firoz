@@ -2,7 +2,11 @@
     font-family: 'Exo', sans-serif;
 }
 
-div {
+.search-results-div {
+    border: 1px solid red;
+}
+
+main {
     display: block; 
     margin: auto;
     max-width: 960px;
@@ -16,7 +20,7 @@ img {
 }
 
 h2{
-  font-size: 40px;
+  font-size: 32px;
   margin-top: 20px;
 }
 
@@ -40,4 +44,18 @@ button {
 }
 ul {
     list-style: none;
+}
+
+iframe {
+    display: block;
+    margin: auto;
+    width: 100;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.youtube-div {
+    display: block;
+    
+    text-align:center;
 }
